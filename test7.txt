@@ -1,0 +1,65 @@
+1. In a classroom, the teacher wants to organize the students' names based on the first letter of their names. The goal is
+to categorize the names into groups where each group contains names that start with the same letter. This
+categorization will help the teacher quickly locate and manage the students.\
+[Ajay Nitish,Abhay,Ram,Ranjit,Rohan,Nirbhay,Nisha,Mohini,Kamini,Pushpa,Phulkumari]
+
+ans:1 #include<bits/stdc++.h>
+using namespace std;
+int main(){
+     vector<string> names = {"Ajay Nitish", "Abhay", "Ram", "Ranjit", "Rohan", "Nirbhay", "Nisha", "Mohini", "Kamini", "Pushpa", "Phulkumari"};
+    map<char, vector<string>> nameGroups;
+
+    for (const auto& name : names) {
+        char firstLetter = tolower(name[0]);
+        nameGroups[firstLetter].push_back(name);
+    }
+
+    for (const auto& group : nameGroups) {
+        cout << "Names starting with '" << group.first << "':" << endl;
+        for (const auto& name : group.second) {
+            cout << "- " << name << endl;
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+       
+
+2.You are developing a system for a retail store to organize products based on their categories. Each product
+belongs to a specific category, and the store wants to categorize and list products under their respective categories
+to streamline inventory management.
+You need to categorise them into 3 category health, food, electronics
+Products:[ Sprite, Pizza, Motorola3G, Samsung, Iphone, Iodex, Pudinhara, Tootpaste,Lux]
+
+ ans:2#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    vector<string> products = {"Sprite", "Pizza", "Motorola3G", "Samsung", "Iphone", "Iodex", "Pudinhara", "Tootpaste", "Lux"};
+    map<string, vector<string>> categories = {
+        {"health", {}},
+        {"food", {}},
+        {"electronics", {}}
+    };
+
+    for (const auto& product : products) {
+        if (product == "Iodex" || product == "Lux" || product == "Tootpaste" || product == "Pudinhara") {
+            categories["health"].push_back(product);
+        } else if (product == "Sprite" || product == "Pizza") {
+            categories["food"].push_back(product);
+        } else {
+            categories["electronics"].push_back(product);
+        }
+    }
+
+    for (const auto& category : categories) {
+        cout << category.first << ":" << endl;
+        for (const auto& item : category.second) {
+            cout << "- " << item << endl;
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
